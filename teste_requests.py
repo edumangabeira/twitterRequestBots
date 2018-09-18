@@ -7,25 +7,26 @@ from fake_useragent import UserAgent
 '''
 Se conecta a uma sessão do twitter.
 
-Caso essa abordagem não funcione, basta adicionar headers simulando um browser
-	u	
+Caso essa abordagem não funcione, basta adicionar headers simulando um browser com a biblioteca fake-useragent
+		
 '''
 
-#TODO: fazer payload com botão da versão mobile(authencicity token)
+#TODO: fazer payload com botão da versão mobile(authenticity token)
+#(wip) desligar o javascript nos impede de coletar campos muito importantes para a análise
 def login(payload, post_url_login, request_url):
+	#click_payload = {'authenticity':'b0d7f51f3227a7d63f8701fdc98f19111212f421'}
 	fake_browser = UserAgent()
 	headers = {'User-Agent':str(fake_browser.chrome)}
 	session = requests.Session()
-	post = session.post(post_url_login, headers = headers, data=payload)
+	
+	post_login = session.post(post_url_login, headers = headers, data = payload)
 	get = session.get(request_url, headers = headers)
-	#arq1 = open("post.html","w")
+	#post_click = session.post(post_url_login,headers = headers, data = click_payload)
 	arq2 = open("text.html","w")
 	print (get.text)
 	arq2.write(get.text)
-	#arq1.close()
 	arq2.close()
 	print ("FIM")
-	#print (get.text)
 
 '''
 Pega os 20 primeiros tweets a cada uma hora
@@ -92,12 +93,12 @@ if __name__ == "__main__":
 	'Bot1':1, 'Bot2':2,'Bot3':2,'Bot4':1,'Bot5':1,'Bot6':2,'Bot7':1, 'Bot8':2,'Bot9':2
 	}
 
-	post_url_login = "https://twitter.com/sessions"
+	post_url_login = "https://twitter.com/login"
 	request_url = 'https://twitter.com'
 	#user = input("entre com seu usuario do twitter:\n")
 	#password = input("digite sua senha:\n")
-	user = ""
-	password = ""
+	user = "palestrinha157@outlook.com"
+	password = "atrocidadenumerica123!"
 
 
 	payload ={
@@ -116,7 +117,7 @@ if __name__ == "__main__":
 	'''
 	Para cada tweet eu quero que seja extraído o texto, hora de coleta, hora da publicação, quantidade de curtidas e retweets.
 
-	Ainda estou pensando na melhor forma de escrever isso, acredito que seja num csv com esses campos.
+	Ainda estou pensando na melhor forma de registrar isso, acredito que seja num csv com esses campos.
 	'''
 	'''for tweet in tweets:
 

@@ -1,6 +1,8 @@
-#-*-coding:utf8-*-
+#-*- coding:utf8 -*-
+import oauth2 as oauth
 import requests
 import time
+import selenium
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 
@@ -8,11 +10,14 @@ from fake_useragent import UserAgent
 Se conecta a uma sessão do twitter.
 
 Caso essa abordagem não funcione, basta adicionar headers simulando um browser com a biblioteca fake-useragent
-		
+
+*O TWITTER NÃO ACEITA AUTENTICAÇÃO USUÁRIO/SENHA. EM VEZ DISSO UTILIZA O PROTOCOLO OAUTH2.*
+--------------------------------------------------------------------------------------------------------------------
+   ---------> talvez não dê pra fugir de usar o selenium se esse for o caso, vou tentar essa abordagem <------------
+--------------------------------------------------------------------------------------------------------------------		
 '''
 
-#TODO: fazer payload com botão da versão mobile(authenticity token)
-#(wip) desligar o javascript nos impede de coletar campos muito importantes para a análise
+#[NÃO USAR O TWITTER MOBILE]: desligar o javascript nos impede de coletar campos muito importantes para a análise
 def login(payload, post_url_login, request_url):
 	#click_payload = {'authenticity':'b0d7f51f3227a7d63f8701fdc98f19111212f421'}
 	fake_browser = UserAgent()
@@ -21,7 +26,6 @@ def login(payload, post_url_login, request_url):
 	
 	post_login = session.post(post_url_login, headers = headers, data = payload)
 	get = session.get(request_url, headers = headers)
-	#post_click = session.post(post_url_login,headers = headers, data = click_payload)
 	arq2 = open("text.html","w")
 	print (get.text)
 	arq2.write(get.text)
@@ -97,19 +101,16 @@ if __name__ == "__main__":
 	request_url = 'https://twitter.com'
 	#user = input("entre com seu usuario do twitter:\n")
 	#password = input("digite sua senha:\n")
-	user = "palestrinha157@outlook.com"
-	password = "atrocidadenumerica123!"
-
+	user = ""
+	password = ""
 
 	payload ={
 		'session[username_or_email]':user,
 		'session[password]':password
 	}
 	
-	#A partir deste passo o usuário já está logado
+	#A partir deste passo o usuário já deve estar logado
 	login(payload,post_url_login, request_url)
-	#soup = BeautifulSoup(request_url,"html.parser")
-	#print(soup.title)
 
 	#coletando a página
 	#retrieveTweets()

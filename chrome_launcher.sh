@@ -1,2 +1,2 @@
 #!/bin/bash
-google-chrome --user-data-dir=/home/edu/analise_timeline/twitterRequestBots/chrome_launcher.sh
+google-chrome --user-data-dir=/YourLocalHere.sh

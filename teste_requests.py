@@ -5,19 +5,9 @@ import time
 import selenium
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
+import getpass
 
-'''
-Se conecta a uma sessão do twitter.
-
-Caso essa abordagem não funcione, basta adicionar headers simulando um browser com a biblioteca fake-useragent
-
-*O TWITTER NÃO ACEITA AUTENTICAÇÃO USUÁRIO/SENHA. EM VEZ DISSO UTILIZA O PROTOCOLO OAUTH2.*
---------------------------------------------------------------------------------------------------------------------
-   ---------> talvez não dê pra fugir de usar o selenium se esse for o caso, vou tentar essa abordagem <------------
---------------------------------------------------------------------------------------------------------------------		
-'''
-
-#[NÃO USAR O TWITTER MOBILE]: desligar o javascript nos impede de coletar campos muito importantes para a análise
+#Se conecta a uma sessão do twitter.
 def login(payload, post_url_login, request_url):
 	#click_payload = {'authenticity':'b0d7f51f3227a7d63f8701fdc98f19111212f421'}
 	fake_browser = UserAgent()
@@ -100,7 +90,7 @@ if __name__ == "__main__":
 	post_url_login = "https://twitter.com/login"
 	request_url = 'https://twitter.com'
 	#user = input("entre com seu usuario do twitter:\n")
-	#password = input("digite sua senha:\n")
+	#password = getpass("digite sua senha:\n")
 	user = ""
 	password = ""
 

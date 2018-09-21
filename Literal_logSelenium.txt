@@ -1,0 +1,14 @@
+(SOLVED)	Essa abordagem de loginnão está sendo validada, por enquanto abre apenas uma página em branco,
+sem logar na minha conta do twitter.
+
+	E se tentarmos entrar no twitter de um usuário já logado? Poderíamos usar o script de abrir uma sandbox 
+e fazer uma pasta pra cada usuário. A requisição teria que ser feita então a partir do browser aberto, como fazer isso?
+O crawler pode interagir com uma página em que o login já está feito?.
+
+
+
+(UPDATE)- O CONFLITO ESTÁ ENTRE A VERSÃO DO DRIVER E DO NAVEGADOR
+		
+		## É importante atualizar constantemente o driver para manter o serviço.
+		#chrome-version = 55.0.2883.87 (64-bit)
+		#chromedriver-version = 2.25

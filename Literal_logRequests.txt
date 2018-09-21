@@ -1,0 +1,15 @@
+'''
+(____1____) Caso essa abordagem de login não funcione, basta adicionar headers simulando um browser com a biblioteca fake-useragent.
+
+'''
+'''
+(____2____)  *O TWITTER NÃO ACEITA AUTENTICAÇÃO USUÁRIO/SENHA. EM VEZ DISSO UTILIZA O PROTOCOLO OAUTH2.*
+--------------------------------------------------------------------------------------------------------------------
+   ---------> talvez não dê pra fugir de usar o selenium se esse for o caso, vou tentar essa abordagem <------------
+--------------------------------------------------------------------------------------------------------------------
+
+		Vou procurar formas de quebrar a autenticação por OAuth2 enquanto a aplicação com selenium está em atividade.
+'''
+
+#[NÃO USAR O TWITTER MOBILE]: desligar o javascript nos impede de coletar campos muito importantes para a análise
+

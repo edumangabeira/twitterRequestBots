@@ -4,10 +4,13 @@ from getpass import getpass
 '''
 Essa abordagem também não está sendo validada, por enquanto abre apenas uma página em branco,
 sem logar na minha conta do twitter.
-
-
 E se tentarmos entrar no twitter de um usuário já logado? Poderíamos usar o script de abrir uma sandbox 
-e fazer uma pasta pra cada usuário
+e fazer uma pasta pra cada usuário. A requisição teria que ser feita então a partir do browser aberto, como fazer isso? O crawler
+pode interagir com uma página em que o login já está feito?.
+'''
+
+'''
+(UPDATE) - O CONFLITO ESTÁ ENTRE A VERSÃO DO DRIVER E DO NAVEGADOR
 '''
 
 #user = input('Enter your username or email : ')
